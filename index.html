@@ -1,0 +1,216 @@
+<!doctype html>
+<!--
+https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Local Weather - Free Code Camp</title>
+  <meta name="description" content="Local Weather">
+  <meta name="author" content="brown">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<link rel="stylesheet" href="libs/weather-icons-master/css/weather-icons.min.css">
+	<link rel="stylesheet" href="libs/weather-icons-master/css/weather-icons-wind.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+	
+	<div class="container weatherInfo">
+		<div class="well well-lg" id="loading-diag">
+			<p>Loading Weather Info...</p>
+			<div class="progress">
+				<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+				aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+				</div>
+			</div>
+			<div class="alert alert-warning hidden" id="error-diag">
+			</div>
+		</div>
+		<div class="panel panel-default hidden" id="weatherPanel">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-12">
+						<span id="city"></span>,
+						<!-- <span id="region"></span>, -->
+						<span id="country"></span>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-3 align-center">
+						<i id="wCode" class="weatherSign wi wi-clear-night"></i>
+						<p id="curWeather"></p>
+					</div>
+					<div class="col-xs-9">
+						<div class="row align-center">
+							<div class="col-xs-4">
+								<span id="tempFieldF" class="hidden unitF"></span>
+								<span id="tempFieldC" class="unitC"></span>
+							</div>
+							<div class="col-xs-4">
+								<span id="maxTempFieldF" class="hidden unitF"></span>
+								<span id="maxTempFieldC" class="unitC"></span>
+								<p>Max</p>
+							</div>
+							<div class="col-xs-4">
+								<span id="minTempFieldF" class="hidden unitF"></span>
+								<span id="minTempFieldC" class="unitC"></span>
+								<p>Min</p>
+							</div>
+						</div>
+						<div class="row align-center">
+							<div class="col-xs-3">
+								<i id="windSign" class="wi wi-windy"></i>
+								<span id="windSpeedFieldMPH" class="hidden unitMPH"></span>
+								<span id="windSpeedFieldKMH" class="unitKMH"></span>
+								<p>Wind Speed</p>
+							</div>
+							<div class="col-xs-6 col-center">
+								<i id="beaufortWindScaleField" class=""></i>
+								<p id="beaufortWindScaleTextField"></p>
+							</div>
+							<div class="col-xs-3">
+								<i id="windDirSignField" class="wi wi-wind towards-0-deg"></i>
+								<p id="windDirField"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p>
+					<div class="row align-center">
+						<div class="col-xs-4">
+							<i id="humiditySign" class="wi wi-humidity"></i>
+							<span id="humidityField"></span>
+							<p>Relative Humidity<p>
+						</div>
+						<div class="col-xs-4">
+							<i id="barometerSign" class="wi wi-barometer"></i>
+							<span id="pressureFieldmbar" class="hidden unitmbar"></span>
+							<span id="pressureFieldhPa" class="unithPa"></span>
+							<p>Atmospheric Pressure<p>
+						</div>
+						<div class="col-xs-4">
+							<span id="visibilityFieldMiles" class="hidden unitMiles"></span>
+							<span id="visibilityFieldKms" class="unitKms"></span>
+							<p>Visibility</p>
+						</div>				
+					</div>
+				</p>
+				<p>
+					<div class="row align-center">
+						<div class="col-xs-3">
+							<i id="sunrise" class="wi wi-sunrise"></i>
+							<span id="sunriseField"></span>
+						</div>
+						<div class="col-xs-6">
+							<div class="progress">
+								<div id="dayProgressBar" class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+									aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+								</div>
+							</div>		
+						</div>
+						<div class="col-xs-3">
+							<i id="sunset" class="wi wi-sunset"></i>
+							<span id="sunsetField"></span>
+						</div>
+					</div>
+				</p>
+				<div class="row align-right">
+					<div class="col-md-12 col-xs-12">
+						<button type="button" class="btn btn-default btn-xs" id="copyWeatherInfo">
+							<span class="glyphicon glyphicon-copy"></span>
+							Copy
+						</button>
+						<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#control-panel">
+							<span class="glyphicon glyphicon-cog"></span>
+							Settings
+						</button>
+						<button type="button" class="btn btn-default btn-xs" id="refreshTemp">
+							<span class="glyphicon glyphicon-refresh"></span>
+							Refresh
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div id="control-panel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+		  <div class="container center-align">
+			<div class="row">
+				<p>
+					<div class="col-xs-4 col-md-2">
+					  Temperature
+					</div>
+					<div class="col-xs-2">
+						<input id="tempUnits" type="checkbox"
+						  data-on-text="&deg;C" data-off-text="&deg;F"
+						  data-off-color="warning" data-on-color="info">
+					</div>
+				</p>
+			</div>
+			<div class="row">
+				<p>
+					<div class="col-xs-4 col-md-2">
+				  Wind Speed
+					</div>
+					<div class="col-xs-2">
+					<input id="windSpeedUnits" type="checkbox"
+					  data-on-text="kmh" data-off-text="mph"
+					  data-off-color="warning" data-on-color="info">
+					</div>
+				</p>
+			</div>
+			<div class="row">
+				<p>
+					<div class="col-xs-4 col-md-2">
+				  Visibility Distance
+					</div>
+					<div class="col-xs-2">
+					<input id="visibilityDistanceUnits" type="checkbox"
+					  data-on-text="kms" data-off-text="miles"
+					  data-off-color="warning" data-on-color="info">
+					</div>
+				</p>
+			</div>
+			<div class="row">
+				<p>
+					<div class="col-xs-4 col-md-2">
+				  Pressure
+					</div>
+					<div class="col-xs-2">		
+					<input id="pressureUnits" type="checkbox"
+					  data-on-text="hPa" data-off-text="mbar"
+					  data-off-color="warning" data-on-color="info">
+					</div>
+				</p>
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="libs/monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather.min.js"></script>
+<script src="libs/bootstrap-switch-master/dist/js/bootstrap-switch.min.js"></script>
+
+<script src="creds.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

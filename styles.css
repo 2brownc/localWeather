@@ -1,0 +1,62 @@
+	html{
+		background-color: black;
+		background-size: cover;
+	}
+	.weatherInfo{
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50%;
+	}
+	.hidden{
+		visibility: hidden;
+	}
+
+	#wCode{
+		font-size : 6em;
+	}
+
+	#windDirSignField, #beaufortWindScaleField,
+	#sunrise, #sunset, #windSign{
+		font-size: xx-large;
+	}
+
+	#tempFieldF, #tempFieldC, #humiditySign, #barometerSign{
+		font-size: x-large;
+	}
+
+	.padding-top-bottom{
+		padding : 5px 0px 5px 0px;
+	}
+
+	.panel{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	#loading-diag{
+		font-size: 2em;
+	}
+
+	#city{
+		font-weight:bold;
+	}
+	.align-center{
+		text-align : center;
+	}
+	.align-right{
+		text-align : right;
+	}
+
+	@media screen and (max-width: 800px){
+		#wCode{
+			font-size: 3em;
+		}
+		.weatherInfo{
+			width:95%;
+		}
+		.weatherInfo{
+			top: 50%;
+
+		}
+	}
