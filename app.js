@@ -578,14 +578,14 @@ function displayWeather(weather) {
     let wBGPicList = wPics[index];
     let wBGPicListLen = wBGPicList.length;
     let wBGPIC = wBGPicList[getRandInt(wBGPicListLen - 1)];
-    $("html").css("background-image", 'url("' + wBGPIC + '")');
+    $("body").css({"background-image": 'url("' + wBGPIC + '")', 'background-color' : ''});
 
     wCodeClass = "weatherSign wi wi-" + index;
   } else {
     let wBGPicList = wPics[wBGPicIndex.toLowerCase()];
     let wBGPicListLen = wBGPicList.length;
     let wBGPIC = wBGPicList[getRandInt(wBGPicListLen - 1)];
-    $("html").css("background-image", 'url("' + wBGPIC + '")');
+    $("body").css({"background-image": 'url("' + wBGPIC + '")', 'background-color' : ''});
 
     wCodeClass = "weatherSign wi wi-" + wPicCode[weather.main];
   }
