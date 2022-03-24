@@ -1,2 +1,2 @@
 # localWeather
-Display local weather information. Built using HTML, CSS, JS and JQuery. Uses the Open Weather Map API.
+Display local weather information. Built using HTML, CSS, JS and jQuery. Uses the Open Weather Map API.
