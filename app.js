@@ -430,9 +430,8 @@ function displayWeather(weather) {
   curWeatherText = weather.currently;
   $("#curWeather").html(curWeatherText);
 
-  //https://chromypics.blogspot.in/
   let wPics = {
-    cloudy: [
+    "cloudy": [
       "assets/images/clouds-1571775.jpg",
       "assets/images/sky-1149217.jpg",
       "assets/images/storm-466677.jpg",
@@ -454,34 +453,34 @@ function displayWeather(weather) {
       "assets/images/leaves-241701.jpg",
       "assets/images/rest-beach-summer-white-sand-sunny-day.jpg",
     ],
-    dust: [
-      "assets/images/20090923_-_Dust_Storm_-_Surfers_Paradise_%2528looking_south%2529.JPG",
+    "dust": [
+      "assets/images/Dust_Storm_Surfers_Paradise.jpg",
       "assets/images/sandstorm-165332.jpg",
-      "assets/images/Sandstorm_of_Longjing_Township_%252CTaichung_County_in_Taiwan.jpg",
+      "assets/images/Sandstorm_of_Longjing_Township_Taiwan.jpg",
     ],
-    fog: [
+    "fog": [
       "assets/images/4DNoPn1gEkw1gFbZIRCGR_ZGWFvmNPSggCLcB/s1600/country-1209094.jpg",
       "assets/images/fishing-1245979.jpg",
       "assets/images/morning-mist-1535967.jpg",
       "assets/images/mountain-1542114.jpg",
       "assets/images/sunset-1209206.jpg",
     ],
-    hail: [
+    "hail": [
       "assets/images/bike-717795.jpg",
       "assets/images/hail-189519.jpg",
       "assets/images/hailstones-1338886.jpg",
     ],
-    haze: [
+    "haze": [
       "assets/images/fog-1565694.jpg",
       "assets/images/landscape-640668.jpg",
       "assets/images/landscape-731341.jpg",
     ],
-    hot: [
+    "hot": [
       "assets/images/effects-of-climate-change.jpg",
       "assets/images/Morroco-arid-climate.jpg",
-      "assets/images/Val-d%2527Orcia-landscape-1.jpg",
+      "assets/images/Orcia-landscape-1.jpg",
     ],
-    hurricane: [
+    "hurricane": [
       "assets/images/hurricanes-927042.jpg",
       "assets/images/key-west-86025.jpg",
     ],
@@ -497,45 +496,45 @@ function displayWeather(weather) {
       "assets/images/texture-699695.jpg",
       "assets/images/texture-699701.jpg",
     ],
-    rain: [
+    "rain": [
       "assets/images/rain-122691.jpg",
       "assets/images/rain-645797.jpg",
       "assets/images/rain-1479303.jpg",
       "assets/images/raining-828890.jpg",
     ],
-    showers: [
+    "showers": [
       "assets/images/rain-1030813_960_720.jpg",
       "assets/images/Snow_shower_on_Dartmoor.jpg",
     ],
-    sleet: [
-      "assets/images/2013-01-24_02_28_48_Freezing_rain_and_sleet_in_Elko%252C_Nevada.JPG",
-      "assets/images/2016-02-15_17_16_34_Freezing_rain_and_sleet_on_a_car_window_in_Sterling%252C_Virginia.jpg",
+    "sleet": [
+      "assets/images/Freezing_rain_and_sleet_in_Elko_Nevada.jpg",
+      "assets/images/Freezing_rain_and_sleet_on_a_car_window_in_Sterling_Virginia.jpg",
       "assets/images/Sleet_on_the_ground.jpg",
     ],
-    smoke: [
+    "smoke": [
       "assets/images/214-1209994488PhzD.jpg",
       "assets/images/pexels-photo-24842.jpg",
       "assets/images/SMOKE_HAZE_PITTSBURGH_PENNSYLVANIA.jpg",
     ],
-    snow: [
+    "snow": [
       "assets/images/snowfall-201496.jpg",
       "assets/images/Snowing_in_Griva.JPG",
       "assets/images/Wintersnow.jpg",
     ],
-    storm: [
+    "storm": [
       "assets/images/storm-407963.jpg",
       "assets/images/storm-426789.jpg",
       "assets/images/storm-918589.jpg",
       "assets/images/storm-918589.jpg",
       "assets/images/clouds-1345270.jpg",
     ],
-    thunderstorm: [
+    "thunderstorm": [
       "assets/images/barn-1364280.jpg",
       "assets/images/flash-731488.jpg",
       "assets/images/flash-1455285.jpg",
       "assets/images/lightning-bolt-768801.jpg",
     ],
-    tornado: [
+    "tornado": [
       "assets/images/7258011540_1811c8be6a_o.jpg",
       "assets/images/14702063480_0c6684caab_o.jpg",
       "assets/images/14805076801_7552063141_o.jpg",
@@ -543,7 +542,7 @@ function displayWeather(weather) {
       "assets/images/tornado-459265.jpg",
       "assets/images/tornado-572504.jpg",
     ],
-    windy: [
+    "windy": [
       "assets/images/palm-tree-1374868.jpg",
       "assets/images/grass-371221.jpg",
       "assets/images/laundry-456112.jpg",
